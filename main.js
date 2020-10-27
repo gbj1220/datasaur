@@ -4,7 +4,7 @@ const { push } = require("./dinos")
  * HELPER FUNCTIONS *
  ********************/
 
- const makeDino = function (species, period, diet, extinct = false) {
+const makeDino = function (species, period, diet, extinct = false) {
   const newDino = {
     species: species,
     period: period,
@@ -40,28 +40,18 @@ const makeExtinct = function (dino) {
   newDino.extinct = true
   return newDino
 }
-
+// or return dino.extinct
 
 const isCarnivore = function (dino) {
-  const newDino = makeDino(dino.species, dino.period, dino.carnivore, dino.extinct,)
-  if (dino.carnivore === true) {
-    return newDino.carnivore === true
-  } else {
-    return false
-  }
-}
+  return dino.carnivore
 
+}
+// or return dino.carnivore because it is a boolean. Can almost always do this. Never need
+// === a boolean true/false
 
 const isExtinct = function (dino) {
-  const newDino = makeDino(dino.species, dino.period, dino.carnivore, dino.extinct,)
-  if (dino.extinct === true) {
-    return newDino.extinct === true
-  } else {
-    return false
-  }
+  return dino.extinct
 }
-
-
 const isTriassic = function (dino) {
   const newDino = makeDino(dino.species, dino.period, dino.carnivore, dino.extinct,)
   if (dino.period === 'Triassic') {
@@ -113,7 +103,7 @@ const notTriassicHelper = function (dino) {
   const newDino = makeDino(dino.species, dino.period, dino.carnivore, dino.extinct,)
   if (dino.period !== 'Triassic') {
     return newDino
-  } 
+  }
 }
 /***********************
  * ITERATION FUNCTIONS *
@@ -206,7 +196,7 @@ const notTriassic = function (dino) {
   const result = [];
   for (dinos of dino) {
     if (notTriassicHelper(dinos))
-    result.push(dinos)
+      result.push(dinos)
   }
   return result
 }
